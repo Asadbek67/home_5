@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kitoblar</title>
+</head>
+<body>
+    <h1>Kitoblar ro'yxati</h1>
+    <ul>
+        {% for book in books %}
+            <li>
+                <a href="{% url 'book_detail' book.id %}">{{ book.title }}</a> - {{ book.author.first_name }} {{ book.author.last_name }}
+                <br>
+                {% if book.author.photo %}
+                    <img src="{{ book.author.photo.url }}" alt="Muallif rasmi" style="width: 100px; height: auto;">
+                {% else %}
+                    <p>Muallif rasmi mavjud emas</p>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
